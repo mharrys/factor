@@ -4,11 +4,14 @@ LIBS = -lm -lgmp
 
 all: factor
 
-factor: main.o
-	$(CC) $(CFLAGS) $(LIBS) -o factor main.o
+factor: main.o primesieve.o
+	$(CC) $(CFLAGS) $(LIBS) -o factor main.o primesieve.o
 
 main.o: main.c
 	$(CC) $(CFLAGS) $(LIBS) -c main.c
+
+primesieve.o: primesieve.c
+	$(CC) $(CFLAGS) $(LIBS) -c primesieve.c
 
 .PHONY: clean
 
