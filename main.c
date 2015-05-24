@@ -27,7 +27,8 @@ main(int argc, char **argv)
 	mpz_t n;
 	mpz_init(n);
 	if (mpz_set_str(n, &line[0], 0) == -1) {
-		fprintf(stderr, "factor: could not parse input to an integer\n");
+		fprintf(stderr, "factor: input must be an integer\n");
+		mpz_clear(n);
 		return 1;
 	}
 
