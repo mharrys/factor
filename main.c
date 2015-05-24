@@ -1,9 +1,18 @@
 #include "config.h"
+#include "factors.h"
 
 #include "stdio.h"
 #include "string.h"
 
-#define INTEGER_LIMIT 255
+static void
+print_result(mpz_t n, struct factors *f)
+{
+	gmp_printf("%Zd: ", n);
+	for (ulong i = 0; i < f->size; i++) {
+		gmp_printf("%Zd ", f->factors[i]);
+	}
+	printf("\n");
+}
 
 int
 main(int argc, char **argv)
