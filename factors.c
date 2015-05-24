@@ -2,8 +2,7 @@
 
 #include <stdlib.h>
 
-#define MEM_CHUNK		2	/* allocation multiplier */
-#define MILLERRABIN_REPEATS	20
+#define MEM_CHUNK 2	/* allocation multiplier */
 
 struct factors *
 factors_create()

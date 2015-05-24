@@ -1,7 +1,7 @@
 #ifndef FACTORS_H_INCLUDED
 #define FACTORS_H_INCLUDED
 
-#include "type.h"
+#include "config.h"
 
 struct factors {
 	ulong	size;
