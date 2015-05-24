@@ -1,7 +1,7 @@
 #ifndef PRIMESIEVE_H_INCLUDED
 #define PRIMESIEVE_H_INCLUDED
 
-#include "type.h"
+#include "config.h"
 
 struct prime_sieve {
 	ulong	size;
