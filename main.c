@@ -32,7 +32,12 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-	gmp_printf("%Zd\n", n);
+	if (mpz_probab_prime_p(n, MILLERRABIN_REPEATS) > 0) {
+		gmp_printf("%Zd: %Zd\n", n, n);
+		mpz_clear(n);
+		return 0;
+	}
+
 	mpz_clear(n);
 
 	return 0;
