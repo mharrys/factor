@@ -6,6 +6,8 @@
 #include "stdio.h"
 #include "string.h"
 
+#define MIN(A, B) (A < B) ? A : B
+
 static void
 print_result(mpz_t n, struct factors *f)
 {
@@ -28,6 +30,7 @@ main(int argc, char **argv)
 
 	mpz_t n;
 	mpz_init(n);
+
 	if (mpz_set_str(n, &line[0], 0) == -1 || mpz_cmp_ui(n, 1) < 0) {
 		fprintf(stderr, "factor: input must be an positive integer\n");
 		mpz_clear(n);
@@ -41,12 +44,27 @@ main(int argc, char **argv)
 	}
 
 	mpz_t t;
-	mpz_init_set(t, n);
+	mpz_init(t);
+	mpz_sqrt(t, n);
 
 	struct factors *f = factors_create();
-	struct prime_sieve *ps = prime_sieve_create(TRIALDIVISION_LIMIT);
+	struct prime_sieve *ps = prime_sieve_create(MIN(TRIALDIVISION_LIMIT, mpz_get_ui(t)));
 
-	trial_division(t, f, ps);
+	if (mpz_perfect_square_p(n)) {
+		factors_push(f, t);
+		factors_push(f, t);
+	} else {
+		mpz_set(t, n);
+		factors_push(f, t);
+	}
+
+	/*
+	 * break if only prime number factors or if any existing composite number
+	 * could not be factorized by trial division
+	 */
+	while (factors_remove_composite(f, t) && trial_division(t, f, ps));
+
+	factors_sort(f);
 	print_result(n, f);
 
 	mpz_clears(n, t, NULL);
