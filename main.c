@@ -28,13 +28,13 @@ main(int argc, char **argv)
 
 	mpz_t n;
 	mpz_init(n);
-	if (mpz_set_str(n, &line[0], 0) == -1) {
-		fprintf(stderr, "factor: input must be an integer\n");
+	if (mpz_set_str(n, &line[0], 0) == -1 || mpz_cmp_ui(n, 1) < 0) {
+		fprintf(stderr, "factor: input must be an positive integer\n");
 		mpz_clear(n);
 		return 1;
 	}
 
-	if (mpz_probab_prime_p(n, MILLERRABIN_REPEATS) > 0) {
+	if (mpz_cmp_ui(n, 1) == 0 || mpz_probab_prime_p(n, MILLERRABIN_REPEATS) > 0) {
 		gmp_printf("%Zd: %Zd\n", n, n);
 		mpz_clear(n);
 		return 0;
