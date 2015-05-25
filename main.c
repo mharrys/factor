@@ -1,5 +1,7 @@
 #include "config.h"
 #include "factors.h"
+#include "primesieve.h"
+#include "trialdivision.h"
 
 #include "stdio.h"
 #include "string.h"
@@ -38,7 +40,18 @@ main(int argc, char **argv)
 		return 0;
 	}
 
-	mpz_clear(n);
+	mpz_t t;
+	mpz_init_set(t, n);
+
+	struct factors *f = factors_create();
+	struct prime_sieve *ps = prime_sieve_create(TRIALDIVISION_LIMIT);
+
+	trial_division(t, f, ps);
+	print_result(n, f);
+
+	mpz_clears(n, t, NULL);
+	factors_destroy(f);
+	prime_sieve_destroy(ps);
 
 	return 0;
 }
