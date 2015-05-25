@@ -64,6 +64,7 @@ factors_remove_composite(struct factors *f, mpz_t factor)
 
 	for (; i < f->size; i++) {
 		if (mpz_probab_prime_p(f->factors[i], MILLERRABIN_REPEATS) == 0) {
+			mpz_set(factor, f->factors[i]);
 			composite = 1;
 			break;
 		}
@@ -80,7 +81,8 @@ factors_remove_composite(struct factors *f, mpz_t factor)
 		mpz_set(f->factors[i], f->factors[i + 1]);
 	}
 
-	factors_pop(f, factor);
+	mpz_clear(f->factors[f->size - 1]);
+	f->size--;
 
 	return 1;
 }
