@@ -4,8 +4,8 @@ LIBS = -lm -lgmp
 
 all: factor
 
-factor: main.o factors.o primesieve.o trialdivision.o
-	$(CC) $(CFLAGS) $(LIBS) -o factor main.o factors.o primesieve.o trialdivision.o
+factor: main.o factors.o primesieve.o trialdivision.o matrix.o
+	$(CC) $(CFLAGS) $(LIBS) -o factor main.o factors.o primesieve.o trialdivision.o matrix.o
 
 main.o: main.c
 	$(CC) $(CFLAGS) $(LIBS) -c main.c
@@ -19,6 +19,8 @@ primesieve.o: primesieve.c
 trialdivision.o: trialdivision.c
 	$(CC) $(CFLAGS) $(LIBS) -c trialdivision.c
 
+matrix.o: matrix.c
+	$(CC) $(CFLAGS) $(LIBS) -c matrix.c
 
 .PHONY: clean
 
