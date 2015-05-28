@@ -32,7 +32,7 @@ main(int argc, char **argv)
 	mpz_init(n);
 
 	if (mpz_set_str(n, &line[0], 0) == -1 || mpz_cmp_ui(n, 1) < 0) {
-		fprintf(stderr, "factor: input must be an positive integer\n");
+		fprintf(stderr, "factor: input must be a positive integer\n");
 		mpz_clear(n);
 		return 1;
 	}
