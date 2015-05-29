@@ -4,8 +4,8 @@ LIBS = -lm -lgmp
 
 all: factor
 
-factor: main.o factors.o primesieve.o trialdivision.o matrix.o
-	$(CC) $(CFLAGS) $(LIBS) -o factor main.o factors.o primesieve.o trialdivision.o matrix.o
+factor: main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o
+	$(CC) $(CFLAGS) $(LIBS) -o factor main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o
 
 main.o: main.c
 	$(CC) $(CFLAGS) $(LIBS) -c main.c
@@ -21,6 +21,9 @@ trialdivision.o: trialdivision.c
 
 matrix.o: matrix.c
 	$(CC) $(CFLAGS) $(LIBS) -c matrix.c
+
+sqrtm.o: sqrtm.c
+	$(CC) $(CFLAGS) $(LIBS) -c sqrtm.c
 
 .PHONY: clean
 
