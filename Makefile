@@ -1,11 +1,11 @@
 CC = gcc
 CFLAGS = -std=c99 -pedantic -Wall -O4
-LIBS = -lm -lgmp
+LIBS = -lm -lgmp -lmpfr
 
 all: factor
 
-factor: main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o factorbase.o
-	$(CC) $(CFLAGS) $(LIBS) -o factor main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o factorbase.o
+factor: main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o factorbase.o smooth.o
+	$(CC) $(CFLAGS) $(LIBS) -o factor main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o factorbase.o smooth.o
 
 main.o: main.c
 	$(CC) $(CFLAGS) $(LIBS) -c main.c
@@ -27,6 +27,9 @@ sqrtm.o: sqrtm.c
 
 factorbase.o: factorbase.c
 	$(CC) $(CFLAGS) $(LIBS) -c factorbase.c
+
+smooth.o: smooth.c
+	$(CC) $(CFLAGS) $(LIBS) -c smooth.c
 
 .PHONY: clean
 

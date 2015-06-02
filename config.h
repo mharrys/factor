@@ -1,6 +1,7 @@
 #ifndef CONFIG_H_INCLUDED
 #define CONFIG_H_INCLUDED
 
+#include "mpfr.h"
 #include "gmp.h"
 
 typedef unsigned long int ulong;
