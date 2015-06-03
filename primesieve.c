@@ -1,8 +1,8 @@
 #include "primesieve.h"
 
-#include "math.h"
-#include "stdlib.h"
-#include "string.h"
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
 
 struct prime_sieve *
 prime_sieve_create(ulong n)
