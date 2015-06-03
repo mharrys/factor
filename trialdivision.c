@@ -3,7 +3,7 @@
 #include "factors.h"
 #include "primesieve.h"
 
-#include "stdlib.h"
+#include <stdlib.h>
 
 int
 trial_division(mpz_t n, struct factors *factors, struct prime_sieve *ps)
