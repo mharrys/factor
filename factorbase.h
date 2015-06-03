@@ -7,17 +7,17 @@
  * Describes one prime number in a factor base.
  */
 struct factor_prime {
+	ulong	r[2];	/* quadratic residues */
 	ulong	value;
 	float	value_log;
-	ulong	r[2];   /* quadratic residues */
 };
 
 /*
  * Describes a number of prime numbers that are smooth over a given size.
  */
 struct factor_base {
-	struct factor_prime	*primes;
 	ulong			size;
+	struct factor_prime	*primes;
 };
 
 struct factor_base *
