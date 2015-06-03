@@ -24,9 +24,7 @@ trial_division(mpz_t n, struct factors *factors, struct prime_sieve *ps)
 			break;
 		}
 
-		/*
-		 * set f = f / p while f = 0 mod p
-		 */
+		/* set f = f / p while f = 0 mod p */
 		while (mpz_congruent_ui_p(f, 0, ps->primes[i])) {
 			mpz_set_ui(p, ps->primes[i]);
 			mpz_cdiv_q(f, f, p);
