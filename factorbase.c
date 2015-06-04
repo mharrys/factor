@@ -60,6 +60,13 @@ factor_base_create(mpz_t n, mpz_t n_sqrt, ulong size)
 }
 
 void
+factor_base_destroy(struct factor_base *fb)
+{
+	free(fb->primes);
+	free(fb);
+}
+
+void
 factor_base_print(struct factor_base *fb)
 {
 	printf("factor base: ");
@@ -73,11 +80,4 @@ factor_base_print(struct factor_base *fb)
 		printf("(%lu %lu)", fb->primes[i].r[0], fb->primes[i].r[1]);
 	}
 	printf("\n");
-}
-
-void
-factor_base_destroy(struct factor_base *fb)
-{
-	free(fb->primes);
-	free(fb);
 }

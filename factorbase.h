@@ -24,9 +24,9 @@ struct factor_base *
 factor_base_create(mpz_t n, mpz_t n_sqrt, ulong size);
 
 void
-factor_base_print(struct factor_base *fb);
+factor_base_destroy(struct factor_base *fb);
 
 void
-factor_base_destroy(struct factor_base *fb);
+factor_base_print(struct factor_base *fb);
 
 #endif
