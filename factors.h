@@ -5,7 +5,7 @@
 
 struct factors {
 	ulong	size;
-	ulong	capacity;   /* allocated array size */
+	ulong	capacity;	/* allocated array size */
 	mpz_t	*factors;
 };
 
