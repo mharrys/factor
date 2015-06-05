@@ -27,6 +27,16 @@ matrix_create(ulong rows, ulong cols)
 }
 
 void
+matrix_destroy(struct matrix *m)
+{
+	for (ulong col = 0; col < m->cols; col++) {
+		free(m->cell[col]);
+	}
+	free(m->cell);
+	free(m);
+}
+
+void
 matrix_zero(struct matrix *m)
 {
 	ulong num_data_rows = num_data(m->rows);
@@ -114,14 +124,4 @@ matrix_print_pivots(struct matrix *m, int *pivots)
 			printf("\n");
 		}
 	}
-}
-
-void
-matrix_destroy(struct matrix *m)
-{
-	for (ulong col = 0; col < m->cols; col++) {
-		free(m->cell[col]);
-	}
-	free(m->cell);
-	free(m);
 }
