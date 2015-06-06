@@ -10,7 +10,7 @@ arithmetic.
 
 Examples
 ========
-The parameters defined in `config.h' can greatly change the integer
+The parameters defined in `config.h` can greatly change the integer
 factorization speed to better or worse.
 
     $ make
@@ -22,7 +22,7 @@ factorization speed to better or worse.
 
 Timed Comparison
 =================
-If you are running GNU/Linux there is a program `factor' in coreutils that can
+If you are running GNU/Linux there is a program `factor` in coreutils that can
 be used for comparison. It uses Pollard-Rho as a integer factorization
 technique but it does not work well on numbers which are the product of two large
 prime numbers as seen below.
