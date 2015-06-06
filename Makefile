@@ -4,8 +4,8 @@ LIBS = -lm -lgmp -lmpfr
 
 all: factor
 
-factor: main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o factorbase.o smooth.o
-	$(CC) $(CFLAGS) $(LIBS) -o factor main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o factorbase.o smooth.o
+factor: main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o factorbase.o smooth.o quadraticsieve.o
+	$(CC) $(CFLAGS) $(LIBS) -o factor main.o factors.o primesieve.o trialdivision.o matrix.o sqrtm.o factorbase.o smooth.o quadraticsieve.o
 
 main.o: main.c
 	$(CC) $(CFLAGS) $(LIBS) -c main.c
@@ -30,6 +30,9 @@ factorbase.o: factorbase.c
 
 smooth.o: smooth.c
 	$(CC) $(CFLAGS) $(LIBS) -c smooth.c
+
+quadraticsieve.o: quadraticsieve.c
+	$(CC) $(CFLAGS) $(LIBS) -c quadraticsieve.c
 
 .PHONY: clean
 

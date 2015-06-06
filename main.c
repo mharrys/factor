@@ -2,11 +2,10 @@
 #include "factors.h"
 #include "primesieve.h"
 #include "trialdivision.h"
+#include "quadraticsieve.h"
 
-#include "stdio.h"
-#include "string.h"
-
-#define MIN(A, B) (A < B) ? A : B
+#include <stdio.h>
+#include <string.h>
 
 static void
 print_result(mpz_t n, struct factors *f)
@@ -58,18 +57,18 @@ main(int argc, char **argv)
 		factors_push(f, t);
 	}
 
-	/*
-	 * break if only prime number factors or if any existing composite number
-	 * could not be factorized by trial division
-	 */
+	/* run trial division to find find small factors */
 	while (factors_remove_composite(f, t) && trial_division(t, f, ps));
+	prime_sieve_destroy(ps);
+
+	/* run quadratic sieve until factorized into only prime numbers */
+	while (factors_remove_composite(f, t) && quadratic_sieve(t, f, QUADRATIC_SIEVE_SIZE));
 
 	factors_sort(f);
 	print_result(n, f);
 
 	mpz_clears(n, t, NULL);
 	factors_destroy(f);
-	prime_sieve_destroy(ps);
 
 	return 0;
 }
