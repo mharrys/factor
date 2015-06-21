@@ -4,9 +4,8 @@ Integer factorization using Quadratic Sieve.
 
 Dependencies
 ============
-You will need the gmp package containing GNU MP for arbitrary precision
-arithmetic and also the MPFR library for multiple-precision floating-point
-arithmetic.
+You will need GMP library arbitrary precision arithmetic and also the MPFR
+library for multiple-precision floating-point arithmetic.
 
 Examples
 ========
