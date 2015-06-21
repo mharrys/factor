@@ -5,7 +5,7 @@ C_FILES := $(wildcard *.c)
 OBJ_FILES := $(C_FILES:.c=.o)
 
 factor: $(OBJ_FILES)
-	$(CC) $(CFLAGS) $(LIBS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ $(LIBS)
 
 obj/%.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
