@@ -1,0 +1,10 @@
+sudo: required
+language: c
+os:
+  - linux
+compiler:
+  - gcc
+before_install:
+  - sudo apt-get install libgmp-dev libmpfr-dev
+script:
+  - make
