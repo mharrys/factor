@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mharrys/factor.svg?branch=master)](https://travis-ci.org/mharrys/factor)
+
 Factor
 ======
 Integer factorization using Quadratic Sieve.
