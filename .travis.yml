@@ -8,3 +8,6 @@ before_install:
   - sudo apt-get install libgmp-dev libmpfr-dev
 script:
   - make
+notifications:
+  email:
+    on_success: never
