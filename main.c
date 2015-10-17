@@ -21,10 +21,11 @@ int
 main(int argc, char **argv)
 {
 	char line[INTEGER_LIMIT];
-	if (argc > 1) {
+	if (argc > 1)
 		strncpy(&line[0], argv[1], INTEGER_LIMIT);
-	} else {
-		scanf("%s\n", &line[0]);
+	else if (scanf("%s\n", &line[0]) != 1) {
+		fprintf(stderr, "factor: unable to read number from stdin\n");
+		return 1;
 	}
 
 	mpz_t n;
